@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=3 uid="uid://8xamc4nrlso7"]
+
+[ext_resource type="PackedScene" uid="uid://ctty67ueju0ia" path="res://bush.fbx" id="1_8jlur"]
+[ext_resource type="PackedScene" uid="uid://d2p8htl3wfewa" path="res://pickable_objects/rose.tscn" id="2_xfh85"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5m0fy"]
+size = Vector3(40, 60, 40)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0.00832335, 7.45058e-09, 0.0714654)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(2.16261, 0, 0, 0, 1, 0, 0, 0, 2.1931, 0, 32.4548, -5.04407)
+shape = SubResource("BoxShape3D_5m0fy")
+
+[node name="bush" parent="." instance=ExtResource("1_8jlur")]
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0.00832335, 7.45058e-09, 0.0714654)
+
+[node name="PickableObject" parent="." instance=ExtResource("2_xfh85")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.938844, 0.164853)
+
+[node name="PickableObject2" parent="." instance=ExtResource("2_xfh85")]
+transform = Transform3D(0.999277, 0.0380215, 0, -0.0380215, 0.999277, 0, 0, 0, 1, 0.27822, 0.938844, 0.414052)
+
+[node name="PickableObject6" parent="." instance=ExtResource("2_xfh85")]
+transform = Transform3D(0.999277, 0.0380215, 0, -0.0380215, 0.999277, 0, 0, 0, 1, 0.137333, 0.938844, 0.504584)
+
+[node name="PickableObject3" parent="." instance=ExtResource("2_xfh85")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.938844, 0.410918)
+
+[node name="PickableObject4" parent="." instance=ExtResource("2_xfh85")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.259924, 0.938844, 0.164853)
+
+[node name="PickableObject5" parent="." instance=ExtResource("2_xfh85")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.426871, 0.938844, 0.330286)

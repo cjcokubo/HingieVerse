@@ -1,0 +1,105 @@
+[gd_scene load_steps=18 format=3 uid="uid://ba3livvhyk87j"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_pb0an"]
+[ext_resource type="PackedScene" uid="uid://dyqno8a3w1q4i" path="res://xr_origin_3d.tscn" id="2_wdee2"]
+[ext_resource type="PackedScene" uid="uid://tbbrxpai72ws" path="res://pickable_object.tscn" id="3_52f25"]
+[ext_resource type="PackedScene" uid="uid://cpp1g5u0gqxdf" path="res://Basket.fbx" id="4_4lsj0"]
+[ext_resource type="PackedScene" uid="uid://tspf5bpvr6fm" path="res://bush.fbx" id="5_fjja7"]
+[ext_resource type="PackedScene" uid="uid://dbxywhs3irnxk" path="res://rose.fbx" id="6_yn6gt"]
+[ext_resource type="PackedScene" uid="uid://baxua1hmchm8g" path="res://heart.fbx" id="7_d82ko"]
+[ext_resource type="PackedScene" uid="uid://clujaf3u776a3" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.tscn" id="8_muo5l"]
+[ext_resource type="PackedScene" uid="uid://bq0ww7wvyepfh" path="res://ui.tscn" id="9_gqmxd"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1xaj8"]
+sky_top_color = Color(1, 1, 1, 1)
+sky_horizon_color = Color(0.970724, 0.961481, 0.950975, 1)
+ground_bottom_color = Color(0.882897, 0.845924, 0.8039, 1)
+ground_horizon_color = Color(0.970724, 0.961481, 0.950975, 1)
+
+[sub_resource type="Sky" id="Sky_r3ev8"]
+sky_material = SubResource("ProceduralSkyMaterial_1xaj8")
+
+[sub_resource type="Environment" id="Environment_qych5"]
+background_mode = 2
+sky = SubResource("Sky_r3ev8")
+tonemap_mode = 2
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pj7f5"]
+size = Vector3(5, 0.1, 5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_jduqg"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_blrkb"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hdugj"]
+metallic = 1.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hbkqi"]
+
+[node name="Main" type="Node3D"]
+script = ExtResource("1_pb0an")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_qych5")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.93606, -0.351627, 0.0122791, 0, 0.0348995, 0.999391, -0.351842, 0.935489, -0.032668, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Floor" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
+shape = SubResource("BoxShape3D_pj7f5")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor/CollisionShape3D"]
+transform = Transform3D(5, 0, 0, 0, 0.1, 0, 0, 0, 5, -0.0720522, 0.154336, -0.0611432)
+mesh = SubResource("BoxMesh_jduqg")
+
+[node name="XROrigin3D" parent="." instance=ExtResource("2_wdee2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.725073, 0)
+current = true
+
+[node name="table" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.082988, -1.16839)
+mesh = SubResource("BoxMesh_blrkb")
+surface_material_override/0 = SubResource("StandardMaterial3D_hdugj")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="table"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="table/StaticBody3D"]
+shape = SubResource("BoxShape3D_hbkqi")
+
+[node name="PickableObject" parent="." instance=ExtResource("3_52f25")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.40589, 0.731304, -0.830357)
+
+[node name="Basket" parent="PickableObject" instance=ExtResource("4_4lsj0")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+
+[node name="PickableObject2" parent="." instance=ExtResource("3_52f25")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.859593, 0.883463, 0.080613)
+
+[node name="bush" parent="PickableObject2" instance=ExtResource("5_fjja7")]
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0, 0)
+
+[node name="PickableObject3" parent="." instance=ExtResource("3_52f25")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.111592, 0.883463, -0.854166)
+
+[node name="PickableObject4" parent="." instance=ExtResource("3_52f25")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.111592, 0.883463, -0.854166)
+
+[node name="rose" parent="PickableObject4" instance=ExtResource("6_yn6gt")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[node name="PickableObject5" parent="." instance=ExtResource("3_52f25")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.111592, 0.883463, -0.854166)
+
+[node name="heart" parent="PickableObject5" instance=ExtResource("7_d82ko")]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 0, 0)
+
+[node name="Viewport2Din3D" parent="." instance=ExtResource("8_muo5l")]
+transform = Transform3D(2.22885, 0, 0, 0, 1, 0, 0, 0, 1, 0.479079, 1.60547, -0.749116)
+screen_size = Vector2(1, 1)
+scene = ExtResource("9_gqmxd")
+viewport_size = Vector2(640, 480)
+scene_properties_keys = PackedStringArray()

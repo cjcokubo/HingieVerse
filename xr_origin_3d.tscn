@@ -1,0 +1,46 @@
+[gd_scene load_steps=8 format=3 uid="uid://dyqno8a3w1q4i"]
+
+[ext_resource type="PackedScene" uid="uid://bl2nuu3qhlb5k" path="res://addons/godot-xr-tools/functions/movement_direct.tscn" id="2_ijpdh"]
+[ext_resource type="PackedScene" uid="uid://bq86r4yll8po" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_fullglove_low.tscn" id="4_7l4ri"]
+[ext_resource type="PackedScene" uid="uid://b6bk2pj8vbj28" path="res://addons/godot-xr-tools/functions/movement_turn.tscn" id="4_dbvkg"]
+[ext_resource type="PackedScene" uid="uid://cqhw276realc" path="res://addons/godot-xr-tools/functions/function_pointer.tscn" id="4_waaks"]
+[ext_resource type="PackedScene" uid="uid://b4ysuy43poobf" path="res://addons/godot-xr-tools/functions/function_pickup.tscn" id="5_pidcl"]
+[ext_resource type="PackedScene" uid="uid://xqimcf20s2jp" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_fullglove_low.tscn" id="6_3xxl5"]
+[ext_resource type="PackedScene" uid="uid://diyu06cw06syv" path="res://addons/godot-xr-tools/player/player_body.tscn" id="6_mqno0"]
+
+[node name="XROrigin3D" type="XROrigin3D"]
+
+[node name="XRCamera3D" type="XRCamera3D" parent="."]
+
+[node name="LeftHand" type="XRController3D" parent="."]
+tracker = &"left_hand"
+
+[node name="MovementDirect" parent="LeftHand" instance=ExtResource("2_ijpdh")]
+strafe = true
+
+[node name="FunctionPickup" parent="LeftHand" instance=ExtResource("5_pidcl")]
+ranged_distance = 1.0
+
+[node name="FunctionPointer" parent="LeftHand" instance=ExtResource("4_waaks")]
+visible = false
+enabled = false
+laser_length = 1
+
+[node name="LeftHand2" parent="LeftHand" instance=ExtResource("4_7l4ri")]
+
+[node name="Right Hand" type="XRController3D" parent="."]
+tracker = &"right_hand"
+
+[node name="MovementTurn" parent="Right Hand" instance=ExtResource("4_dbvkg")]
+
+[node name="FunctionPickup" parent="Right Hand" instance=ExtResource("5_pidcl")]
+ranged_distance = 1.0
+
+[node name="FunctionPointer" parent="Right Hand" instance=ExtResource("4_waaks")]
+visible = false
+enabled = false
+laser_length = 1
+
+[node name="RightHand2" parent="Right Hand" instance=ExtResource("6_3xxl5")]
+
+[node name="PlayerBody" parent="." instance=ExtResource("6_mqno0")]

@@ -1,0 +1,38 @@
+[gd_scene load_steps=2 format=3 uid="uid://bjfwnkd2v15wk"]
+
+[ext_resource type="Texture2D" uid="uid://jkn8hqdhrnja" path="res://ui-assets/discover/name-with-photo.png" id="1_yos7p"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchor_left = 0.022
+anchor_top = 0.025
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -25.344
+offset_top = -17.2
+offset_right = -512.0
+offset_bottom = -169.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = -1.0
+offset_right = 805.0
+offset_bottom = 805.0
+scale = Vector2(0.438498, 0.37331)
+texture = ExtResource("1_yos7p")
+expand_mode = 5
+stretch_mode = 5
